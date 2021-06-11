@@ -1,0 +1,56 @@
+<form [formGroup]="formCadastro" (submit)="onSubmit()">
+    <div class="field">
+        <label class="label">Nome</label>
+        <div class="control">
+            <input [ngClass]="nomeIsValid() ? 'input is-success' : 'input is-danger'" type="text"
+                placeholder="Digite seu nome, no mínimo 5 caracteres" formControlName="nome">
+        </div>
+        <div *ngIf="nomeIsValid()">
+            <p class="help is-success">Nome está válido</p>
+        </div>
+        <div *ngIf="nomeIsValid() == false">
+            <p class="help is-danger">Nome está inválido</p>
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Idade</label>
+        <div class="control">
+            <input [ngClass]="idadeIsValid() ? 'input is-success' : 'input is-danger'" type="number" placeholder="Digite sua idade (min: 18)" formControlName="idade">
+        </div>
+        <div *ngIf="idadeIsValid()">
+            <p class="help is-success">Idade está válido</p>
+        </div>
+        <div *ngIf="idadeIsValid() == false">
+            <p class="help is-danger">Idade está inválido</p>
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Sexo</label>
+        <div class="control">
+            <div [ngClass]="sexoIsValid() ? 'select is-success' : 'select is-danger'">
+                <select formControlName="sexo">
+                    <option>Selecione seu sexo</option>
+                    <option value="1">Masculino</option>
+                    <option value="2">Feminino</option>
+                </select>
+            </div>
+        </div>
+        <div *ngIf="sexoIsValid()">
+            <p class="help is-success">Sexo está válido</p>
+        </div>
+        <div *ngIf="sexoIsValid() == false">
+            <p class="help is-danger">Sexo está inválido</p>
+        </div>
+    </div>
+
+    <div class="field is-grouped">
+        <div class="control">
+            <button class="button is-link">Enviar</button>
+        </div>
+        <div class="control">
+            <button class="button is-link is-light" type="reset">Limpar</button>
+        </div>
+    </div>
+</form>
